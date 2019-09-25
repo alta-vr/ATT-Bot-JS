@@ -1,1 +1,1 @@
-export * from './WebsocketBot';
+export { default as WebsocketBot } from './WebsocketBot';
