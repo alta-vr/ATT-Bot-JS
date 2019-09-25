@@ -61,7 +61,7 @@ class WebsocketBot {
                             remoteConsole.onError = handleError;
                             remoteConsole.onMessage = handleMessage;
                             remoteConsole.onClose = handleDisconnect;
-                            yield remoteConsole.connect(details.connection.address, details.connection.websocket_port);
+                            yield remoteConsole.connect(details.connection.address, details.connection.websocket_port, details.token);
                             handleConnection(server, remoteConsole);
                         }
                         else {

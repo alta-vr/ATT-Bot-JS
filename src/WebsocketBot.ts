@@ -84,7 +84,7 @@ export default class WebsocketBot
                     remoteConsole.onMessage = handleMessage;
                     remoteConsole.onClose = handleDisconnect;
             
-                    await remoteConsole.connect(details.connection.address, details.connection.websocket_port);
+                    await remoteConsole.connect(details.connection.address, details.connection.websocket_port, details.token);
             
                     handleConnection(server, remoteConsole);
                 }
