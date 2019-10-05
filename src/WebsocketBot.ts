@@ -68,7 +68,7 @@ export default class WebsocketBot
                     });
                 }
             }
-
+            console.log(chalk.green("Server check loop"));
             await new Promise<void>(resolve => setTimeout(resolve, this.options.refreshOnlineInterval));
         }
 
