@@ -65,6 +65,7 @@ export default class WebsocketBot
                     await new Promise<void>(resolve => { 
                         console.log( chalk.blue("Server "+ server.name +" is online, connecting in "+ (this.options.connectDelayInterval/1000) +"s"));
                         setTimeout( beginConnection, this.options.connectDelayInterval, server );
+                        resolve(); 
                     });
                 }
             }
