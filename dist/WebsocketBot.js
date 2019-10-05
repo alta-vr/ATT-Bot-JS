@@ -55,7 +55,6 @@ class WebsocketBot {
                         });
                     }
                 }
-                console.log(chalk_1.default.green("Server check loop"));
                 yield new Promise(resolve => setTimeout(resolve, this.options.refreshOnlineInterval));
             }
             function beginConnection(server) {
