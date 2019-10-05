@@ -12,11 +12,13 @@ export type Server =
 
 export type Options =
 {
-    refreshOnlineInterval:number
+    refreshOnlineInterval:number,
+    connectDelayInterval:number
 }
 
 const defaultOptions:Options = {
-    refreshOnlineInterval: 60000
+    refreshOnlineInterval: 60000,
+    connectDelayInterval: 15000
 }
 
 export default class WebsocketBot
@@ -60,11 +62,13 @@ export default class WebsocketBot
                 if (online.findIndex(item => item.id == server.id) < 0)
                 {
                     online.push(server);
-
-                    beginConnection(server);
+                    await new Promise<void>(resolve => { 
+                        console.log( chalk.blue("Server "+ server.name +" is online, connecting in "+ (this.options.connectDelayInterval/1000) +"s"));
+                        setTimeout( beginConnection, this.options.connectDelayInterval, server );
+                        resolve(); 
+                    });
                 }
             }
-
             await new Promise<void>(resolve => setTimeout(resolve, this.options.refreshOnlineInterval));
         }
 
