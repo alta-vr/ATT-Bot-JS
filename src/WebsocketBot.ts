@@ -62,8 +62,10 @@ export default class WebsocketBot
                 if (online.findIndex(item => item.id == server.id) < 0)
                 {
                     online.push(server);
-
-                    await new Promise<void>(resolve => setTimeout( beginConnection, this.options.connectDelayInterval, server ));
+                    await new Promise<void>(resolve => { 
+                        console.log( chalk.blue("Server "+ server.name +" is online, connecting in "+ (this.options.connectDelayInterval/1000) +"s"));
+                        setTimeout( beginConnection, this.options.connectDelayInterval, server );
+                    });
                 }
             }
 
