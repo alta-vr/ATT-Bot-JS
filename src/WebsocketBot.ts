@@ -12,11 +12,13 @@ export type Server =
 
 export type Options =
 {
-    refreshOnlineInterval:number
+    refreshOnlineInterval:number,
+    connectDelayInterval:number
 }
 
 const defaultOptions:Options = {
-    refreshOnlineInterval: 60000
+    refreshOnlineInterval: 60000,
+    connectDelayInterval: 15000
 }
 
 export default class WebsocketBot
@@ -61,7 +63,7 @@ export default class WebsocketBot
                 {
                     online.push(server);
 
-                    beginConnection(server);
+                    setTimeout( beginConnection, connectDelayInterval, server );
                 }
             }
 

@@ -16,7 +16,8 @@ const alta_jsapi_1 = require("alta-jsapi");
 const sha512_1 = __importDefault(require("crypto-js/sha512"));
 const chalk_1 = __importDefault(require("chalk"));
 const defaultOptions = {
-    refreshOnlineInterval: 60000
+    refreshOnlineInterval: 60000,
+    connectDelayInterval: 15000
 };
 class WebsocketBot {
     constructor() {
@@ -46,7 +47,7 @@ class WebsocketBot {
                 for (var server of running) {
                     if (online.findIndex(item => item.id == server.id) < 0) {
                         online.push(server);
-                        beginConnection(server);
+                        setTimeout( beginConnection, connectDelayInterval, server);
                     }
                 }
                 yield new Promise(resolve => setTimeout(resolve, this.options.refreshOnlineInterval));
