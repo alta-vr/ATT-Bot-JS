@@ -48,7 +48,7 @@ class WebsocketBot {
                 for (var server of running) {
                     if (online.findIndex(item => item.id == server.id) < 0) {
                         online.push(server);
-                        setTimeout(beginConnection, this.options.connectDelayInterval, server);
+                        yield new Promise(resolve => setTimeout(beginConnection, this.options.connectDelayInterval, server));
                     }
                 }
                 yield new Promise(resolve => setTimeout(resolve, this.options.refreshOnlineInterval));

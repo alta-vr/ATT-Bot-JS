@@ -63,7 +63,7 @@ export default class WebsocketBot
                 {
                     online.push(server);
 
-                    setTimeout( beginConnection, this.options.connectDelayInterval, server );
+                    await new Promise<void>(resolve => setTimeout( beginConnection, this.options.connectDelayInterval, server ));
                 }
             }
 
