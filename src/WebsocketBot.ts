@@ -53,7 +53,7 @@ export default class WebsocketBot
         
         while (true)
         {
-            var running = await Servers.getRunning();
+            var running = await Servers.getOnline();
 
             running = running.filter(condition);
 

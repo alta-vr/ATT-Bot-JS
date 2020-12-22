@@ -43,7 +43,7 @@ class WebsocketBot {
             console.log(chalk_1.default.green("Username: " + alta_jsapi_1.Sessions.getUsername()));
             var online = [];
             while (true) {
-                var running = yield alta_jsapi_1.Servers.getRunning();
+                var running = yield alta_jsapi_1.Servers.getOnline();
                 running = running.filter(condition);
                 for (var server of running) {
                     if (online.findIndex(item => item.id == server.id) < 0) {
